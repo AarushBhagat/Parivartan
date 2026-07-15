@@ -1,158 +1,347 @@
-<<<<<<< HEAD
-# Parivartan – Civic Issue Reporting App
+# 🌍 Parivartan – AI-Powered Civic Grievance Management Platform
 
-Parivartan is a full-stack civic grievance management platform consisting of:
+<div align="center">
 
-- **Express.js backend** – REST API (Node.js)
-- **React web dashboard** – Staff/department portal (`portal/`)
-- **Expo React Native mobile app** – Citizen-facing app (`parivartan-citizen-app/`)
-- **Pathway real-time processing service** – Streaming pipeline (`pathway-service/`)
+![Platform](https://img.shields.io/badge/Platform-Full%20Stack-blue?style=for-the-badge)
+![React Native](https://img.shields.io/badge/React%20Native-Mobile-61DAFB?style=for-the-badge\&logo=react)
+![React](https://img.shields.io/badge/React-Web-61DAFB?style=for-the-badge\&logo=react)
+![Node.js](https://img.shields.io/badge/Node.js-Backend-339933?style=for-the-badge\&logo=node.js)
+![Firebase](https://img.shields.io/badge/Firebase-Cloud-FFCA28?style=for-the-badge\&logo=firebase)
+![AWS S3](https://img.shields.io/badge/AWS-S3-FF9900?style=for-the-badge\&logo=amazonaws)
+![Python](https://img.shields.io/badge/Python-AI_Service-3776AB?style=for-the-badge\&logo=python)
 
-Expo config files such as `app.json` and `eas.json` belong inside the mobile app folders, not in the repository root.
+### Empowering citizens to report civic issues while enabling authorities to resolve them efficiently through AI-assisted workflows and real-time updates.
+
+</div>
 
 ---
 
-## Quick Start (Backend + Pathway)
+# 📖 Overview
 
-### 1. Firebase credentials
+**Parivartan** is a scalable, AI-powered civic grievance management platform that connects **citizens**, **government staff**, and **administrators** through a unified ecosystem.
 
-Place your Firebase service-account JSON at `backend/config/serviceAccountKey.json`
-(used by both the Express backend and the Pathway service).
+The platform allows citizens to report civic problems with images and location data, while authorities can efficiently assign, monitor, and resolve issues using dedicated dashboards.
 
-### 2. Express backend
+An AI-powered processing service enriches reported issues with severity levels and intelligent categorization to accelerate resolution.
+
+---
+
+# ✨ Key Features
+
+### 📱 Citizen Application
+
+* Secure Authentication
+* AI-assisted Issue Reporting
+* Image Upload Support
+* GPS-based Location Tracking
+* Interactive Map View
+* Complaint History
+* Live Complaint Status Tracking
+* User Profile Management
+
+### 👨‍💼 Staff Dashboard
+
+* Secure Staff Login
+* Department-wise Issue Management
+* Complaint Assignment
+* Status Updates
+* Work History
+* Real-time Notifications
+* Dashboard Analytics
+
+### 🌐 Web Portal
+
+* Public Grievance Portal
+* Complaint Search & Tracking
+* Administrative Dashboard
+* Filtering & Sorting
+* Department Management
+
+### 🤖 AI Processing Service
+
+* Real-time Streaming Pipeline
+* Intelligent Categorization
+* Severity Prediction
+* Automated Data Enrichment
+* Live Event Streaming
+
+---
+
+# 🏗️ System Architecture
+
+```text
+                         Citizens
+                             │
+                             ▼
+                  📱 Mobile Application
+                             │
+                             ▼
+                    Express REST API
+                             │
+         ┌───────────────────┼───────────────────┐
+         │                   │                   │
+         ▼                   ▼                   ▼
+ Firebase Auth         Firestore DB         AWS S3 Storage
+         │                   │                   │
+         └──────────────┬────┴───────────────────┘
+                        │
+                        ▼
+              🤖 Pathway AI Processing
+          ┌──────────────────────────────┐
+          │ • Severity Detection          │
+          │ • Issue Categorization        │
+          │ • Real-time Processing        │
+          └──────────────────────────────┘
+                        │
+                        ▼
+              👨‍💼 Staff Dashboard
+                        │
+                        ▼
+                 🌐 Admin Web Portal
+```
+
+---
+
+# 📂 Repository Structure
+
+```text
+Parivartan
+│
+├── backend/                     # Express.js Backend APIs
+├── Staffapp/                    # Staff Dashboard
+├── portal/                      # React Web Portal
+├── parivartan-citizen-app/      # Expo React Native App
+├── pathway-service/             # AI Processing Service
+│
+├── README.md
+└── package.json
+```
+
+---
+
+# 🛠️ Tech Stack
+
+| Category        | Technologies                                      |
+| --------------- | ------------------------------------------------- |
+| Frontend        | React, React Native, Expo, TypeScript, JavaScript |
+| Backend         | Node.js, Express.js                               |
+| Database        | Firebase Firestore                                |
+| Authentication  | Firebase Authentication                           |
+| Cloud Storage   | AWS S3                                            |
+| AI              | Python, Pathway                                   |
+| Build Tools     | Vite, Babel                                       |
+| Version Control | Git & GitHub                                      |
+
+---
+
+# 🚀 Quick Start
+
+## Clone Repository
+
+```bash
+git clone https://github.com/AarushBhagat/Parivartan.git
+cd Parivartan
+```
+
+---
+
+# ⚙️ Backend Setup
+
+Install dependencies
 
 ```bash
 npm install --prefix backend
-npm start           # http://localhost:5000
 ```
 
-From the repo root, `npm start` launches the backend and `npm run portal:dev` launches the web portal.
+Run the backend
 
-### 3. Pathway real-time processing service
+```bash
+npm start
+```
+
+Server starts on
+
+```text
+http://localhost:5000
+```
+
+---
+
+# 📱 Mobile App Setup
+
+```bash
+cd parivartan-citizen-app
+npm install
+npx expo start
+```
+
+---
+
+# 👨‍💼 Staff Dashboard
+
+```bash
+cd Staffapp
+npm install
+npm run dev
+```
+
+---
+
+# 🌐 Web Portal
+
+```bash
+cd portal
+npm install
+npm start
+```
+
+---
+
+# 🤖 AI Processing Service
+
+Create a virtual environment
 
 ```bash
 cd pathway-service
-python -m venv .venv && source .venv/bin/activate   # Windows: .venv\Scripts\activate
+
+python -m venv .venv
+```
+
+Activate environment
+
+### Windows
+
+```bash
+.venv\Scripts\activate
+```
+
+### Linux / macOS
+
+```bash
+source .venv/bin/activate
+```
+
+Install dependencies
+
+```bash
 pip install -r requirements.txt
+```
 
-# Optional: copy env template and customise
-cp .env.example .env
+Run service
 
+```bash
 python main.py
 ```
 
-The service prints:
+---
 
+# 🔄 Data Flow
+
+```text
+Citizen Reports Issue
+          │
+          ▼
+Express Backend API
+          │
+          ▼
+Store Raw Complaint
+     (Firestore)
+          │
+          ▼
+Forward to AI Service
+          │
+          ▼
+AI Processing Pipeline
+   • Category Detection
+   • Severity Analysis
+   • Data Enrichment
+          │
+          ▼
+Processed Complaint
+          │
+          ▼
+Firestore + Live Stream
+          │
+          ▼
+Staff Dashboard & Web Portal
 ```
-[Pathway] Pipeline starting …
-          REST input  → POST http://localhost:8080/
-          SSE output  → http://localhost:8081/stream
-          Firestore   → enabled
-```
-
-### 4. Connect Express → Pathway (optional forwarding)
-
-Add to the Express backend's `.env`:
-
-```
-PATHWAY_SERVICE_URL=http://localhost:8080/
-```
-
-When set, every new issue submitted via `POST /api/issues` is automatically forwarded to the Pathway pipeline for enrichment and written to the `processed_grievances` Firestore collection.
 
 ---
 
-## How the Pathway Pipeline Works
+# ⚡ Real-Time Processing
 
-```
-Citizen App  →  POST /api/issues (Express)
-                       │
-                       ├─ saves raw grievance to Firestore `grievances`
-                       │
-                       └─ forwards to Pathway REST connector (:8080)
-                                    │
-                           Pathway UDFs compute:
-                             • severity  (high / medium / low)
-                             • category  (from department code)
-                                    │
-                         ┌──────────┴──────────┐
-                         ▼                     ▼
-              Firestore `processed_            SSE /stream
-              grievances` collection          (:8081)
-```
+The Pathway streaming service automatically:
 
-1. **Input** – `pw.io.http.rest_connector` creates an HTTP endpoint that accepts `POST /` with issue JSON. Pathway automatically ingests each new message into a streaming table.
+* Receives newly reported issues
+* Performs AI-based enrichment
+* Calculates severity
+* Categorizes complaints
+* Streams processed results
+* Updates Firestore instantly
 
-2. **Enrichment** – Two `@pw.udf` functions run over the streaming table:
-   - `compute_severity` – keyword-based severity scoring
-   - `compute_category` – maps department codes to readable category names
-
-3. **Output** – `pw.io.subscribe` callback writes every enriched row to:
-   - **Firestore** `processed_grievances` collection (real-time, auto-subscribed by frontend)
-   - **SSE endpoint** `GET http://localhost:8081/stream` (for any non-Firebase consumer)
-
-No restart is required; Pathway's streaming model propagates updates automatically.
+No service restart is required.
 
 ---
 
-## Demonstrating Real-Time Updates
+# 🔐 Environment Variables
 
-With the Pathway service running, execute the demo script:
+## Backend
 
-```bash
-cd pathway-service
-python demo.py
+```env
+PORT=5000
+PATHWAY_SERVICE_URL=http://localhost:8080
 ```
-
-Expected output:
-
-```
-[POST] Submitted 'Dangerous pothole on highway' → HTTP 200
-[POST] Submitted 'Street light not working'     → HTTP 200
-
-[SSE] ✅ Enriched issue #1 received:
-      title     : Dangerous pothole on highway
-      severity  : high
-      category  : Road Infrastructure
-      processed : 2025-01-01T10:00:00+00:00
-
-[SSE] ✅ Enriched issue #2 received:
-      title     : Street light not working
-      severity  : medium
-      category  : Municipal Services
-      processed : 2025-01-01T10:00:01+00:00
-
-[Demo] All issues processed and streamed. ✅
-```
-
-Adding new issues (via the demo script, the mobile app, or `curl`) automatically triggers enrichment **without restarting** the service.
 
 ---
 
-## Environment Variables
+## Pathway Service
 
-### Pathway service (`pathway-service/.env`)
-
-| Variable               | Default                              | Description                              |
-|------------------------|--------------------------------------|------------------------------------------|
-| `PATHWAY_PORT`         | `8080`                               | Pathway REST input port                  |
-| `PATHWAY_SSE_PORT`     | `8081`                               | SSE output port                          |
-| `FIREBASE_CREDENTIALS` | `../backend/config/serviceAccountKey.json` | Path to Firebase service-account JSON    |
-
-### Express backend (`.env`)
-
-| Variable               | Default | Description                                         |
-|------------------------|---------|-----------------------------------------------------|
-| `PORT`                 | `5000`  | Express server port                                 |
-| `PATHWAY_SERVICE_URL`  | *(none)*| If set, issues are forwarded to Pathway after save  |
+```env
+PATHWAY_PORT=8080
+PATHWAY_SSE_PORT=8081
+FIREBASE_CREDENTIALS=../backend/config/serviceAccountKey.json
+```
 
 ---
 
-## Mobile App Setup
+# 📸 Screenshots
 
-See [`parivartan-citizen-app/README.md`](parivartan-citizen-app/README.md) for Google OAuth and Expo configuration.
+> Add screenshots of:
+>
+> * Citizen Mobile App
+> * Staff Dashboard
+> * Admin Portal
+> * AI Processing Dashboard
+> * Complaint Workflow
 
-The web portal now lives in [`portal/`](portal/) and its React source is under [`portal/src/`](portal/src/).
-=======
-# Parivartan.
->>>>>>> 45c5b37bc2a23f132b75a92313651f596b5429ab
+---
+
+# 🚀 Future Improvements
+
+* AI-based Image Analysis
+* Push Notifications
+* Multi-language Support
+* Predictive Analytics
+* Smart Complaint Routing
+* Offline Complaint Submission
+* Government API Integration
+* Advanced Analytics Dashboard
+
+---
+
+# 👨‍💻 Developer
+
+**Aarush Bhagat**
+
+* GitHub: https://github.com/AarushBhagat
+* LinkedIn: https://www.linkedin.com/in/aarushbhagat03/
+
+---
+
+<div align="center">
+
+### ⭐ If you found this project useful, consider giving it a Star!
+
+**Building technology for smarter and more responsive cities. 🌍**
+
+</div>
