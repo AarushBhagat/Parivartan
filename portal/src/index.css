@@ -1,0 +1,166 @@
+@import "tailwindcss";
+
+@theme {
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-primary-hover: #15803D;
+  --color-primary-light: #22C55E;
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+
+  --color-emerald-glow: rgba(16, 185, 129, 0.25);
+  --color-glass-border: rgba(255, 255, 255, 0.1);
+
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  
+  /* Fonts */
+  --font-sans: 'Inter', 'Outfit', sans-serif;
+}
+
+@layer base {
+  :root {
+    /* Ultra-dark background and foreground */
+    --background: #030712; /* Deepest blue/black */
+    --foreground: #F8FAFC; /* Slate 50 */
+
+    /* Glass cards on very dark background */
+    --card: rgba(30, 41, 59, 0.6); /* Slate 800 with transparency */
+    --card-foreground: #F8FAFC;
+
+    --popover: rgba(3, 7, 18, 0.95);
+    --popover-foreground: #F8FAFC;
+
+    /* Green core elements maintained */
+    --primary: #10B981; /* Vibrant Emerald */
+    --primary-foreground: #022C22;
+
+    --secondary: #1E293B; /* Slate 800 */
+    --secondary-foreground: #F8FAFC;
+
+    --muted: #0F172A; /* Slate 900 */
+    --muted-foreground: #94A3B8; /* Slate 400 */
+
+    --accent: #059669; /* Slightly darker emerald */
+    --accent-foreground: #F8FAFC;
+
+    --destructive: #7F1D1D; /* Red 900 */
+    --destructive-foreground: #FAFAFA;
+
+    --border: #1E293B; /* Slate 800 */
+    --input: #1E293B;
+    --ring: #10B981;
+
+    --radius: 1rem;
+  }
+
+  .light {
+    --background: #F5F7F8;
+    --foreground: #0F172A;
+
+    --card: rgba(255, 255, 255, 0.72);
+    --card-foreground: #0F172A;
+
+    --popover: rgba(255, 255, 255, 0.9);
+    --popover-foreground: #0F172A;
+
+    --primary: #16A34A;
+    --primary-foreground: #FFFFFF;
+
+    --secondary: #F8FAFC;
+    --secondary-foreground: #475569;
+
+    --muted: #F1F5F9;
+    --muted-foreground: #94A3B8;
+
+    --accent: #34D399;
+    --accent-foreground: #0F172A;
+
+    --destructive: #EF4444;
+    --destructive-foreground: #FAFAFA;
+
+    --border: #E2E8F0;
+    --input: #E2E8F0;
+    --ring: #16A34A;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+}
+
+/* Glassmorphism utilities */
+.glass-panel {
+  @apply bg-card backdrop-blur-xl border border-glass-border shadow-[0_8px_30px_rgb(0,0,0,0.04)] rounded-2xl;
+}
+
+.glass-nav {
+  @apply bg-white/70 backdrop-blur-md border border-white/20 shadow-sm rounded-full;
+}
+
+/* Animations */
+@keyframes blob {
+  0% { transform: translate(0px, 0px) scale(1); }
+  33% { transform: translate(30px, -50px) scale(1.1); }
+  66% { transform: translate(-20px, 20px) scale(0.9); }
+  100% { transform: translate(0px, 0px) scale(1); }
+}
+
+.animate-blob {
+  animation: blob 10s infinite;
+}
+
+.animation-delay-2000 {
+  animation-delay: 2s;
+}
+
+.animation-delay-4000 {
+  animation-delay: 4s;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: var(--border);
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--muted-foreground);
+}
