@@ -3,3 +3,11 @@ node_modules/
 **/node_modules/
 **/.expo/
 portal/build/
+
+# Secrets & Environment variables
+.env
+.env.local
+.env.*.local
+*.env
+google-services.json
+GoogleService-Info.plist
